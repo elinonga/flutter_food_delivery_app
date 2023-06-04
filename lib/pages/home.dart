@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/constants.dart';
 import 'package:food_delivery_app/widgets/main_drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,13 +14,25 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Column(
+        title: const Column(
           children: [
-            Text("Location"),
-            Text("Dar es Salaam, TZ"),
+            kMiniHeight,
+            Text(
+              "Location",
+              style: kNormalTextStyle,
+            ),
+            Text(
+              "Dar es Salaam, TZ",
+              style: kHeaderTextStyle,
+            ),
           ],
         ),
-        actions: [Icon(Icons.shopping_cart_checkout)],
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Icon(Icons.shopping_cart_checkout),
+          ),
+        ],
       ),
       drawer: const MainDrawer(),
       body: ListView(children: [
