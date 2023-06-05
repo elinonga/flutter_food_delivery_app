@@ -16,7 +16,7 @@ const kWhiteTextStyle = TextStyle(
 const kBigWhiteTextStyle = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.bold,
-  fontSize: 25,
+  fontSize: 20,
 );
 
 // Spaces
@@ -25,6 +25,7 @@ const kMiniHeight = SizedBox(height: 5);
 const kLilHeight = SizedBox(height: 10);
 const kNormalHeight = SizedBox(height: 15);
 const kMidHeight = SizedBox(height: 25);
+const kMiniWidth = SizedBox(width: 5);
 
 // Image
 const kImageBanner = NetworkImage(

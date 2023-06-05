@@ -71,7 +71,16 @@ class _HomePageState extends State<HomePage> {
         kMidHeight,
 
         // Row of Food Containers
-        const FoodContainer(),
+        const SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              FoodContainer(),
+              FoodContainer(),
+              FoodContainer(),
+            ],
+          ),
+        ),
       ]),
     );
   }
@@ -85,7 +94,9 @@ class FoodContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 270,
+      margin: EdgeInsets.symmetric(horizontal: 12.0),
+      height: 300,
+      width: 250,
       decoration: const BoxDecoration(
         color: Colors.black,
         image: const DecorationImage(
@@ -93,7 +104,7 @@ class FoodContainer extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.all(
-          Radius.circular(12.0),
+          Radius.circular(18.0),
         ),
       ),
       child: Column(
@@ -102,7 +113,7 @@ class FoodContainer extends StatelessWidget {
           children: [
             // Junk Food ListTile
             Container(
-              margin: EdgeInsets.only(top: 12.0, left: 12.0),
+              margin: const EdgeInsets.only(top: 12.0, left: 12.0),
               decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(
@@ -110,7 +121,7 @@ class FoodContainer extends StatelessWidget {
               ),
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
-                child: ListTile(
+                child: const ListTile(
                   leading: Icon(
                     Icons.fastfood,
                     color: Colors.grey,
@@ -126,10 +137,11 @@ class FoodContainer extends StatelessWidget {
             // Column of Food
             Container(
               decoration: BoxDecoration(
+                color: Colors.transparent,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.5),
-                    offset: Offset(0, 2),
+                    color: Colors.black.withOpacity(0.4),
+                    offset: const Offset(0, 2),
                     blurRadius: 1.0,
                     spreadRadius: 1.0,
                   ),
@@ -140,9 +152,12 @@ class FoodContainer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Arabian beef Kebab",
-                      style: kBigWhiteTextStyle,
+                    SizedBox(
+                      width: 120,
+                      child: const Text(
+                        "Arabian beef Kebab",
+                        style: kBigWhiteTextStyle,
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -151,14 +166,28 @@ class FoodContainer extends StatelessWidget {
                           "30 Min | 1 serving",
                           style: kMidNormalTextStyle,
                         ),
-                        Container(
-                          decoration: const ShapeDecoration(
-                            shape: CircleBorder(),
-                            color: Colors.grey,
-                          ),
-                          child: const Icon(
-                            Icons.favorite_border,
-                            color: Colors.white,
+
+                        // Favorite Icon
+                        GestureDetector(
+                          onTap: () {
+                            // Handle the click event here
+                            print('Favorite food!');
+                          },
+                          child: Container(
+                            decoration: ShapeDecoration(
+                              shape: CircleBorder(
+                                side: BorderSide(
+                                  width: 6,
+                                  color: Colors.grey.withOpacity(0.3),
+                                ),
+                              ),
+                              color: Colors.grey.withOpacity(0.3),
+                            ),
+                            child: const Icon(
+                              Icons.favorite_border,
+                              color: Colors.white,
+                              size: 30,
+                            ),
                           ),
                         ),
                       ],
