@@ -81,6 +81,29 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+
+        // Map of restaurants near you
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                "Near You",
+                style: kHeaderTextStyle,
+              ),
+              GestureDetector(
+                onTap: () {
+                  print("See more");
+                },
+                child: const Text(
+                  "See map",
+                  style: kMidNormalTextStyle,
+                ),
+              ),
+            ],
+          ),
+        ),
       ]),
     );
   }
@@ -94,7 +117,7 @@ class FoodContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 12.0),
+      margin: const EdgeInsets.symmetric(horizontal: 12.0),
       height: 300,
       width: 250,
       decoration: const BoxDecoration(
@@ -152,11 +175,13 @@ class FoodContainer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 120,
-                      child: const Text(
+                      child: Text(
                         "Arabian beef Kebab",
                         style: kBigWhiteTextStyle,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                       ),
                     ),
                     Row(
